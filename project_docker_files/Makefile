@@ -27,7 +27,7 @@ endif
 
 DCEPCT = $(DCEP) bin/console --env=test
 
-COMPOSE = docker compose --env-file .env.local
+COMPOSE = docker compose
 
 XDEBUG = @docker compose exec -u root php php docker/php/xdebug/xdebug.php
 

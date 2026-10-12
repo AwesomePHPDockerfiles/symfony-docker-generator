@@ -16,18 +16,24 @@ services:
       context: ./
       dockerfile: ./docker/php/Dockerfile
       target: php-fpm
+    depends_on:
+      - database
     expose:
       - "9000"
     volumes:
       - .:/var/www/
     extra_hosts:
       - "host.docker.internal:host-gateway"
+    env_file: .env.local
 
   webserver:
     build:
       context: ./docker/nginx/
+    depends_on:
+      - php
     ports:
       - "${APP_DOCKER_HOST_PORT}:80"
+      - "9003:9003"
     tty: true
     volumes:
       - .:/var/www/

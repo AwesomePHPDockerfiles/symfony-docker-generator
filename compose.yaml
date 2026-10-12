@@ -11,7 +11,3 @@ services:
       - ./project_docker_files:/var/www/project_docker_files
     extra_hosts:
       - "host.docker.internal:host-gateway"
-
-volumes:
-  postgresql:
-    driver: local
